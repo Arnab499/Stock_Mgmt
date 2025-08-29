@@ -1,0 +1,7 @@
+package com.ofss;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface TransactionRepository extends CrudRepository<Transactions,Integer>{
+
+}
