@@ -36,4 +36,45 @@ public class CustomerService {
         }
         return ResponseEntity.notFound().build();
     }
+ // PUT – Full update
+    public ResponseEntity<Customers> updateCustomer(int id, Customers updatedCustomer) {
+        return customerRepository.findById(id)
+                .map(existingCustomer -> {
+                    existingCustomer.setFirstName(updatedCustomer.getFirstName());
+                    existingCustomer.setLastName(updatedCustomer.getLastName());
+                    existingCustomer.setPhoneNumber(updatedCustomer.getPhoneNumber());
+                    existingCustomer.setCity(updatedCustomer.getCity());
+                    existingCustomer.setEmailId(updatedCustomer.getEmailId());
+                    // Save and return
+                    customerRepository.save(existingCustomer);
+                    return ResponseEntity.ok(existingCustomer);
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // PATCH – Partial update
+    public ResponseEntity<Customers> partiallyUpdateCustomer(int id, Customers partialCustomer) {
+        return customerRepository.findById(id)
+                .map(existingCustomer -> {
+                    if (partialCustomer.getFirstName() != null) {
+                        existingCustomer.setFirstName(partialCustomer.getFirstName());
+                    }
+                    if (partialCustomer.getLastName() != null) {
+                        existingCustomer.setLastName(partialCustomer.getLastName());
+                    }
+                    if (partialCustomer.getPhoneNumber() != null) {
+                        existingCustomer.setPhoneNumber(partialCustomer.getPhoneNumber());
+                    }
+                    if (partialCustomer.getCity() != null) {
+                        existingCustomer.setCity(partialCustomer.getCity());
+                    }
+                    if (partialCustomer.getEmailId() != null) {
+                        existingCustomer.setEmailId(partialCustomer.getEmailId());
+                    }
+                    // Save and return
+                    customerRepository.save(existingCustomer);
+                    return ResponseEntity.ok(existingCustomer);
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

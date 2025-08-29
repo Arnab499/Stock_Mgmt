@@ -10,19 +10,19 @@ public class Stocks {
 
     @Id
     @Column(name = "STOCK_ID")
-    private int stockId;   
+    private Integer stockId;   
 
     @Column(name = "STOCK_NAME")
     private String stockName;  
 
     @Column(name = "STOCK_PRICE")
-    private double stockPrice;  
+    private Long stockPrice;  
 
     @Column(name = "STOCK_VOLUME")
-    private long stockVolume;   
+    private Long stockVolume;   
 
     @Column(name = "LISTING_PRICE")
-    private double listingPrice;  
+    private Long listingPrice;  
 
     @Column(name = "LISTED_DATE")
     private LocalDate listedDate; 
@@ -35,8 +35,8 @@ public class Stocks {
         super();
     }
 
-    public Stocks(int stockId, String stockName, double stockPrice,
-                  long stockVolume, double listingPrice,
+    public Stocks(Integer stockId, String stockName, Long stockPrice,
+                  Long stockVolume, Long listingPrice,
                   LocalDate listedDate, String listedExchange) {
         this.stockId = stockId;
         this.stockName = stockName;
@@ -48,11 +48,11 @@ public class Stocks {
     }
 
 
-    public int getStockId() {
+    public Integer getStockId() {
         return stockId;
     }
 
-    public void setStockId(int stockId) {
+    public void setStockId(Integer stockId) {
         this.stockId = stockId;
     }
 
@@ -64,27 +64,27 @@ public class Stocks {
         this.stockName = stockName;
     }
 
-    public double getStockPrice() {
+    public Long getStockPrice() {
         return stockPrice;
     }
 
-    public void setStockPrice(double stockPrice) {
+    public void setStockPrice(Long stockPrice) {
         this.stockPrice = stockPrice;
     }
 
-    public long getStockVolume() {
+    public Long getStockVolume() {
         return stockVolume;
     }
 
-    public void setStockVolume(long stockVolume) {
+    public void setStockVolume(Long stockVolume) {
         this.stockVolume = stockVolume;
     }
 
-    public double getListingPrice() {
+    public Long getListingPrice() {
         return listingPrice;
     }
 
-    public void setListingPrice(double listingPrice) {
+    public void setListingPrice(Long listingPrice) {
         this.listingPrice = listingPrice;
     }
 

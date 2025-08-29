@@ -15,7 +15,7 @@ public class TransactionController {
     private TransactionRepository transactionRepository;
 
     // POST – Add a new transaction
-    @RequestMapping(value="/transactions", method=RequestMethod.POST)
+    @PostMapping("/transactions")
     public ResponseEntity<Object> addTransaction(@RequestBody Transactions newTransaction) {
         return transactionService.addTransaction(newTransaction);
     }
@@ -37,5 +37,20 @@ public class TransactionController {
     @DeleteMapping("/transactions/{id}")
     public ResponseEntity<String> deleteTransactionById(@PathVariable int id) {
         return transactionService.deleteTransactionById(id);
+    }
+ // Full update (PUT)
+    @PutMapping("/transactions/{id}")
+    public ResponseEntity<Transactions> updateTransaction(
+            @PathVariable int id,
+            @RequestBody Transactions updatedTransaction) {
+        return transactionService.updateTransaction(id, updatedTransaction);
+    }
+
+    // Partial update (PATCH)
+    @PatchMapping("/transactions/{id}")
+    public ResponseEntity<Transactions> partiallyUpdateTransaction(
+            @PathVariable int id,
+            @RequestBody Transactions partialTransaction) {
+        return transactionService.partiallyUpdateTransaction(id, partialTransaction);
     }
 }

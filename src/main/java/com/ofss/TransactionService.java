@@ -36,4 +36,49 @@ public class TransactionService {
         }
         return ResponseEntity.notFound().build();
     }
+ // PUT – Full update
+    public ResponseEntity<Transactions> updateTransaction(int id, Transactions updatedTransaction) {
+        return transactionRepository.findById(id)
+                .map(existingTransaction -> {
+                    existingTransaction.setCustId(updatedTransaction.getCustId());
+                    existingTransaction.setStockId(updatedTransaction.getStockId());
+                    existingTransaction.setTxnPrice(updatedTransaction.getTxnPrice());
+                    existingTransaction.setTxnType(updatedTransaction.getTxnType());
+                    existingTransaction.setQty(updatedTransaction.getQty());
+                    existingTransaction.setTxnDate(updatedTransaction.getTxnDate());
+                    // Save and return
+                    transactionRepository.save(existingTransaction);
+                    return ResponseEntity.ok(existingTransaction);
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // PATCH – Partial update
+    public ResponseEntity<Transactions> partiallyUpdateTransaction(int id, Transactions partialTransaction) {
+        return transactionRepository.findById(id)
+                .map(existingTransaction -> {
+                    if (partialTransaction.getCustId() != null) {
+                        existingTransaction.setCustId(partialTransaction.getCustId());
+                    }
+                    if (partialTransaction.getStockId() != null) {
+                        existingTransaction.setStockId(partialTransaction.getStockId());
+                    }
+                    if (partialTransaction.getTxnPrice() != null) {
+                        existingTransaction.setTxnPrice(partialTransaction.getTxnPrice());
+                    }
+                    if (partialTransaction.getTxnType() != null) {
+                        existingTransaction.setTxnType(partialTransaction.getTxnType());
+                    }
+                    if (partialTransaction.getQty() != null) {
+                        existingTransaction.setQty(partialTransaction.getQty());
+                    }
+                    if (partialTransaction.getTxnDate() != null) {
+                        existingTransaction.setTxnDate(partialTransaction.getTxnDate());
+                    }
+                    // Save and return
+                    transactionRepository.save(existingTransaction);
+                    return ResponseEntity.ok(existingTransaction);
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

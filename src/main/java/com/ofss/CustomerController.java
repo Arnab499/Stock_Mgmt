@@ -38,4 +38,19 @@ public class CustomerController {
     public ResponseEntity<String> deleteCustomerById(@PathVariable int id) {
         return customerService.deleteCustomerById(id);
     }
+ // Full update (PUT)
+    @PutMapping("/customers/{id}")
+    public ResponseEntity<Customers> updateCustomer(
+            @PathVariable int id,
+            @RequestBody Customers updatedCustomer) {
+        return customerService.updateCustomer(id, updatedCustomer);
+    }
+
+    // Partial update (PATCH)
+    @PatchMapping("/customers/{id}")
+    public ResponseEntity<Customers> partiallyUpdateCustomer(
+            @PathVariable int id,
+            @RequestBody Customers partialCustomer) {
+        return customerService.partiallyUpdateCustomer(id, partialCustomer);
+    }
 }

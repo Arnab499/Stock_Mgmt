@@ -38,4 +38,21 @@ public class StockController {
     public ResponseEntity<String> deleteStockById(@PathVariable int id) {
         return stockService.deleteStockById(id);
     }
+    
+ // PUT – Update an existing stock (full update)
+    @PutMapping("/stocks/{id}")
+    public ResponseEntity<Stocks> updateStock(
+            @PathVariable int id,
+            @RequestBody Stocks updatedStock) {
+        return stockService.updateStock(id, updatedStock);
+    }
+
+    // PATCH – Partially update an existing stock
+    @PatchMapping("/stocks/{id}")
+    public ResponseEntity<Stocks> partiallyUpdateStock(
+            @PathVariable int id,
+            @RequestBody Stocks partialStock) {
+        return stockService.partiallyUpdateStock(id, partialStock);
+    }
+
 }

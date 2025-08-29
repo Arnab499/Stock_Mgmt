@@ -11,7 +11,7 @@ public class Customers {
 
     @Id
     @Column(name = "CUST_ID")
-    private int custId;   
+    private Integer custId;   
 
     @Column(name = "FIRST_NAME")
     private String firstName;
@@ -32,7 +32,7 @@ public class Customers {
         super();
     }
 
-    public Customers(int custId, String firstName, String lastName,
+    public Customers(Integer custId, String firstName, String lastName,
                      Long phoneNumber, String city, String emailId) {
         this.custId = custId;
         this.firstName = firstName;
@@ -42,11 +42,11 @@ public class Customers {
         this.emailId = emailId;
     }
 
-    public int getCustId() {
+    public Integer getCustId() {
         return custId;
     }
 
-    public void setCustId(int custId) {
+    public void setCustId(Integer custId) {
         this.custId = custId;
     }
 

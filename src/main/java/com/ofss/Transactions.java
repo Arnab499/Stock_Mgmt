@@ -12,7 +12,7 @@ public class Transactions {
 
     @Id
     @Column(name = "TXN_ID")
-    private int txnId;   
+    private Integer txnId;   
 
     @Column(name = "CUST_ID")
     private Integer custId;  
@@ -21,13 +21,13 @@ public class Transactions {
     private Integer stockId; 
 
     @Column(name = "TXN_PRICE")
-    private double txnPrice; 
+    private Long txnPrice; 
 
     @Column(name = "TXN_TYPE")
     private String txnType;  
 
     @Column(name = "QTY")
-    private long qty;        
+    private Long qty;        
 
     @Column(name = "TXN_DATE")
     private LocalDate txnDate; 
@@ -37,8 +37,8 @@ public class Transactions {
         super();
     }
 
-    public Transactions(int txnId, Integer custId, Integer stockId,
-                        double txnPrice, String txnType, long qty, LocalDate txnDate) {
+    public Transactions(Integer txnId, Integer custId, Integer stockId,
+                        Long txnPrice, String txnType, Long qty, LocalDate txnDate) {
         this.txnId = txnId;
         this.custId = custId;
         this.stockId = stockId;
@@ -49,11 +49,11 @@ public class Transactions {
     }
 
    
-    public int getTxnId() {
+    public Integer getTxnId() {
         return txnId;
     }
 
-    public void setTxnId(int txnId) {
+    public void setTxnId(Integer txnId) {
         this.txnId = txnId;
     }
 
@@ -73,11 +73,11 @@ public class Transactions {
         this.stockId = stockId;
     }
 
-    public double getTxnPrice() {
+    public Long getTxnPrice() {
         return txnPrice;
     }
 
-    public void setTxnPrice(double txnPrice) {
+    public void setTxnPrice(Long txnPrice) {
         this.txnPrice = txnPrice;
     }
 
@@ -89,11 +89,11 @@ public class Transactions {
         this.txnType = txnType;
     }
 
-    public long getQty() {
+    public Long getQty() {
         return qty;
     }
 
-    public void setQty(long qty) {
+    public void setQty(Long qty) {
         this.qty = qty;
     }
 
