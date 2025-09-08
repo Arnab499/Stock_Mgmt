@@ -1,7 +1,10 @@
 package com.ofss;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
@@ -10,9 +13,11 @@ import java.time.LocalDate;
 @Table(name = "TRANSACTIONS")
 public class Transactions {
 
-    @Id
-    @Column(name = "TXN_ID")
-    private Integer txnId;   
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "txn_seq_gen")
+	@SequenceGenerator(name = "txn_seq_gen", sequenceName = "txn_seq", allocationSize = 1)
+	@Column(name = "TXN_ID")
+	private Integer txnId;   
 
     @Column(name = "CUST_ID")
     private Integer custId;  
